@@ -1,0 +1,66 @@
+body {
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.wrapper {
+    margin-top: 100px;
+}
+
+.form-signin {
+    max-width: 380px;
+    padding: 15px 35px 20px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.inputStyle {
+    margin-bottom: 10px !important;
+}
+
+.iconos {
+    position: static !important;
+}
+
+
+/*Navigation Bar Style BEGIN*/
+
+.navbar {
+    margin-bottom: 0;
+    background-color: #579680;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+.navbar li a,
+.navbar .navbar-brand {
+    color: #fff !important;
+    font-weight: 600;
+}
+
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+    color: #ff6700 !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+.btn-primary {
+    color: #fff;
+    border-color: #579680;
+}
