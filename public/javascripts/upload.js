@@ -28,9 +28,9 @@ $('#upload-input').on('change', function () {
             processData: false,
             contentType: false,
             success: function (data) {
-                if (data.substr(0,6) == "error:") {
+                if (data.substr(0, 6) == "error:") {
                     alert(data.substr(6));
-					$('.progress-bar').text("");
+                    $('.progress-bar').text("");
                     $('.progress-bar').width(0);
                 } else {
                     img = JSON.parse(data);
@@ -41,9 +41,9 @@ $('#upload-input').on('change', function () {
                 }
                 console.log(data);
             },
-			error: function(data){
-                alert("Error ne servidor");
-			},
+            error: function (data) {
+                alert("Error en el servidor");
+            },
             xhr: function () {
                 // create an XMLHttpRequest
                 var xhr = new XMLHttpRequest();
