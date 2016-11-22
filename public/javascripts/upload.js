@@ -30,6 +30,8 @@ $('#upload-input').on('change', function () {
             success: function (data) {
                 if (data.substr(0,6) == "error:") {
                     alert(data.substr(6));
+					$('.progress-bar').text("");
+                    $('.progress-bar').width(0);
                 } else {
                     img = JSON.parse(data);
                     tipo = img.images[0].classifiers[0].classes[0].class;
