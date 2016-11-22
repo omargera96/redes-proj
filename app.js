@@ -3,6 +3,12 @@ var app = express();
 var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
+var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
+
+var visual_recognition = new VisualRecognitionV3({
+	api_key: 'e9b2d83b02a794c8c61219fd956725815d55110a',
+	version_date: '2016-05-19'
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -25,6 +31,15 @@ app.post('/upload', function(req, res){
   // rename it to it's orignal name
   form.on('file', function(field, file) {
     fs.rename(file.path, path.join(form.uploadDir, file.name));
+	var params = {
+		images_file: fs.createReadStream(path.join(form.uploadDir, file.name)),
+	};
+	visual_recognition.classify(params, function(err, res) {
+	if (err)
+		console.log(err);
+	else
+		console.log(JSON.stringify(res, null, 2));
+	});	
   });
 
   // log any errors that occur
