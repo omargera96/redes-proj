@@ -31,7 +31,7 @@ app.post('/upload', function(req, res){
   // rename it to it's orignal name
   var fileName;
   form.on('file', function(field, file) {
-    fs.rename(file.path, path.join(form.uploadDir, file.name));
+	fs.renameSync(file.path, path.join(form.uploadDir, file.name));
 	fileName = file.name;
   });
 
@@ -43,13 +43,13 @@ app.post('/upload', function(req, res){
   // once all the files have been uploaded, send a response to the client
   form.on('end', function() {
 	var params = {
-		images_file: fs.createReadStream(path.join(form.uploadDir, fileName)),
+		images_file: fs.createReadStream(path.join(form.uploadDir, fileName))
 	};
 	visual_recognition.classify(params, function(err, response) {
 	if (err){
-		res.end(err);
+		console.log(err);
+		res.end("error");
 	}else{
-		
 		res.end(JSON.stringify(response, null, 2));
 	}
 	});	

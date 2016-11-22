@@ -28,6 +28,14 @@ $('#upload-input').on('change', function () {
             processData: false,
             contentType: false,
             success: function (data) {
+				if(data == "error"){
+					alert("Ha ocurrido un Error")
+				}else{
+					img = JSON.parse(data);
+					tipo = img.images[0].classifiers[0].classes[0].class;
+					porcentaje = img.images[0].classifiers[0].classes[0].score;
+					alert("Tipo: "+ tipo + "\nPorcentaje de probabilidad: " + (porcentaje*100));
+				}
                 console.log(data);
             },
             xhr: function () {
