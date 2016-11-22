@@ -30,9 +30,16 @@ app.post('/upload', function(req, res){
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
   var fileName;
+  var exccedSize;
   form.on('file', function(field, file) {
-	fs.renameSync(file.path, path.join(form.uploadDir, file.name));
-	fileName = file.name;
+	if(file.size > 1109422){//Max Size
+		exccedSize = true;
+		fs.unlinkSync(file.path);
+	}else{
+		exccedSize = false;
+		fs.renameSync(file.path, path.join(form.uploadDir, file.name));
+		fileName = file.name;
+	}
   });
 
   // log any errors that occur
@@ -42,17 +49,22 @@ app.post('/upload', function(req, res){
 
   // once all the files have been uploaded, send a response to the client
   form.on('end', function() {
-	var params = {
-		images_file: fs.createReadStream(path.join(form.uploadDir, fileName))
-	};
-	visual_recognition.classify(params, function(err, response) {
-	if (err){
-		console.log(err);
-		res.end("error");
-	}else{
-		res.end(JSON.stringify(response, null, 2));
+	if(exccedSize == true){
+		res.end("error:Ha exedido en Tamaño permitido para el archivo");
 	}
-	});	
+	else{
+		var params = {
+			images_file: fs.createReadStream(path.join(form.uploadDir, fileName))
+		};
+		visual_recognition.classify(params, function(err, response) {
+		if (err){
+			console.log(err);
+			res.end("error:Classify Error");
+		}else{
+			res.end(JSON.stringify(response, null, 2));
+		}
+		});	
+	}
   });
 
   // parse the incoming request containing the form data

@@ -28,8 +28,8 @@ $('#upload-input').on('change', function () {
             processData: false,
             contentType: false,
             success: function (data) {
-                if (data == "error") {
-                    alert("Ha ocurrido un Error")
+                if (data.substr(0,6) == "error:") {
+                    alert(data.substr(6));
                 } else {
                     img = JSON.parse(data);
                     tipo = img.images[0].classifiers[0].classes[0].class;
@@ -39,6 +39,9 @@ $('#upload-input').on('change', function () {
                 }
                 console.log(data);
             },
+			error: function(data){
+                alert("Error ne servidor");
+			},
             xhr: function () {
                 // create an XMLHttpRequest
                 var xhr = new XMLHttpRequest();
