@@ -29,17 +29,10 @@ app.post('/upload', function(req, res){
 
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
+  var fileName;
   form.on('file', function(field, file) {
     fs.rename(file.path, path.join(form.uploadDir, file.name));
-	var params = {
-		images_file: fs.createReadStream(path.join(form.uploadDir, file.name)),
-	};
-	visual_recognition.classify(params, function(err, res) {
-	if (err)
-		console.log(err);
-	else
-		console.log(JSON.stringify(res, null, 2));
-	});	
+	fileName = file.name;
   });
 
   // log any errors that occur
@@ -49,7 +42,17 @@ app.post('/upload', function(req, res){
 
   // once all the files have been uploaded, send a response to the client
   form.on('end', function() {
-    res.end('success');
+	var params = {
+		images_file: fs.createReadStream(path.join(form.uploadDir, fileName)),
+	};
+	visual_recognition.classify(params, function(err, response) {
+	if (err){
+		res.end(err);
+	}else{
+		
+		res.end(JSON.stringify(response, null, 2));
+	}
+	});	
   });
 
   // parse the incoming request containing the form data
