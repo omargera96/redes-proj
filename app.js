@@ -32,7 +32,7 @@ app.post('/upload', function (req, res) {
     var fileName;
     var exccedSize;
     form.on('file', function (field, file) {
-        if (file.size > 1724398) { //Max Size
+        if (file.size > 2097152) { //Max Size
             exccedSize = true;
             fs.unlinkSync(file.path);
         } else {
