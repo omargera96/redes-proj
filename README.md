@@ -8,3 +8,8 @@ RNA Project
 
   2. Install IBM Watson
 `npm install watson-developer-cloud --save`
+
+  3. Then run the server 
+`node app.js`
+
+  4. Go to localhost:3000 in any Web Browser. 

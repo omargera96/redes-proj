@@ -1,20 +1,20 @@
 {
-    "name": "What-Am-I?",
-    "version": "1.0.0",
-    "description": "An AJAX img uploader using JS and NodeJS and improving a ANN of IBM",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Public Final Devs",
-    "license": "MIT",
-    "dependencies": {
-        "express": "^4.14.0",
-        "formidable": "^1.0.17",
-        "watson-developer-cloud": "^2.9.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/omargera96/redes-proj.git"
-    }
+  "name": "What-Am-I?",
+  "version": "1.0.0",
+  "description": "An AJAX img uploader using JS and NodeJS and improving a ANN of IBM",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Public Final Devs",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "formidable": "^1.0.17",
+    "watson-developer-cloud": "^2.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omargera96/redes-proj.git"
+  }
 }
