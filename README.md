@@ -12,4 +12,4 @@ RNA Project
   3. Then run the server 
 `node app.js`
 
-  4. Go to localhost:3000 in any Web Browser. 
+  4. Go to this [link](localhost:3000) in any Web Browser. 
